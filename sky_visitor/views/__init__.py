@@ -200,7 +200,7 @@ class ResetPasswordView(TokenValidateMixin, FormView):
         kwargs['user'] = self.token_user  # Form expects this
         return kwargs
 
-    def get_form(self, form_class):
+    def get_form(self, form_class=None):
         if self.is_token_valid:
             return super(ResetPasswordView, self).get_form(form_class)
         else:
