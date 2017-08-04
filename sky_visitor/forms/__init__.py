@@ -30,7 +30,7 @@ class RegisterForm(auth_forms.UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
         UserModel = get_user_model()
-        if UserModel.USERNAME_FIELD != 'username':
+        if UserModel.USERNAME_FIELD != 'username' and 'username' in self.fields:
             del self.fields['username']
 
     def clean_username(self):
