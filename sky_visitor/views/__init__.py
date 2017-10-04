@@ -171,11 +171,6 @@ class ForgotPasswordView(SendTokenEmailMixin, FormView):
         active_users = UserModel._default_manager.filter(
             email__iexact=email, is_active=True)
         for user in active_users:
-            # Make sure that no email is sent to a user that actually has
-            # a password marked as unusable
-            if not user.has_usable_password():
-                continue
-
             self.send_email(user)
 
         return super(ForgotPasswordView, self).form_valid(form)  # Do redirect
