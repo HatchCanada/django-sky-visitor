@@ -1,6 +1,3 @@
-![Concentric Sky](https://concentricsky.com/media/uploads/images/csky_logo.jpg)
-
-
 # Sky Visitor
 
 Sky Visitor is an open-source Django library developed by [Concentric Sky](http://concentricsky.com/). It is a full-featured authentication and user system that complements django.contib.auth.
@@ -18,7 +15,7 @@ Sky Visitor is an open-source Django library developed by [Concentric Sky](http:
 
 Install this package using pip:
 
-    pip install git+https://github.com/concentricsky/django-sky-visitor.git@v1.0.1
+    pip install git+https://github.com/HatchCanada/django-sky-visitor.git@v2.0.0
 
 Add `'sky_visitor'` to your `INSTALLED_APPS` array.
 
