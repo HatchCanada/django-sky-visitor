@@ -16,7 +16,7 @@ from django.contrib.auth import get_user_model, SESSION_KEY
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.tokens import default_token_generator
 from django.core import mail
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.http import int_to_base36
 from django.utils.text import capfirst
 from sky_visitor.models import InvitedUser

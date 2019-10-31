@@ -15,7 +15,7 @@ from django.contrib import auth
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import resolve_url
 from django.utils.decorators import method_decorator
