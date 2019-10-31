@@ -25,7 +25,7 @@ class InvitedUser(models.Model):
     )
     email = models.EmailField(max_length=254, unique=True)
     status = models.CharField(max_length=32, default=STATUS_INVITED, choices=STATUS_CHOICES)
-    created_user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
+    created_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
 
     # We need to fake a few properties so we can use the default token generation code
     @property
