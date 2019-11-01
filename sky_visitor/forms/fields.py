@@ -30,7 +30,7 @@ class PasswordRulesField(forms.CharField):
             min_length = self.DEFAULT_MIN_LENGTH
         if not kwargs.get('widget', None):
             kwargs['widget'] = forms.PasswordInput
-        super(PasswordRulesField, self).__init__(max_length, min_length, *args, **kwargs)
+        super(PasswordRulesField, self).__init__(max_length=max_length, min_length=min_length, *args, **kwargs)
 
     def clean(self, value):
         if value is None or len(value) < self.min_length:
