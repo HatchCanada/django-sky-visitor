@@ -24,7 +24,7 @@ from django.shortcuts import resolve_url
 from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 from django.utils.http import base36_to_int, int_to_base36
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from emailtemplates.utils import send_email_template
 
