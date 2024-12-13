@@ -13,7 +13,7 @@
 # limitations under the License.
 from django import forms
 from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import forms as auth_forms, get_user_model
 from sky_visitor.forms.fields import PasswordRulesField
 from sky_visitor.models import InvitedUser

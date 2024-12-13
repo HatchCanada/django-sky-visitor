@@ -19,11 +19,11 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import resolve_url
 from django.utils.decorators import method_decorator
-from django.utils.http import is_safe_url
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import CreateView, FormView, RedirectView, TemplateView
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from sky_visitor.models import InvitedUser
 from sky_visitor.backends import auto_login
 from sky_visitor.forms import RegisterForm, LoginForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm, InvitationStartForm, InvitationCompleteForm
@@ -88,7 +88,7 @@ class LoginView(FormView):
         redirect_to = self.request.GET.get(self.redirect_field_name, '')
 
         # Ensure the user-originating redirection url is safe.
-        if not is_safe_url(url=redirect_to, host=self.request.get_host()):
+        if not url_has_allowed_host_and_scheme(url=redirect_to, allowed_hosts={self.request.get_host()}):
             redirect_to = resolve_url(settings.LOGIN_REDIRECT_URL)
 
         if self.success_url and (self.success_url_overrides_redirect_field or not redirect_to):
@@ -152,7 +152,7 @@ class LogoutView(RedirectView):
         if self.redirect_field_name in self.request.GET:
             redirect_to = self.request.GET[self.redirect_field_name]
             # Security check -- don't allow redirection to a different host.
-            if not is_safe_url(url=redirect_to, host=self.request.get_host()):
+            if not url_has_allowed_host_and_scheme(url=redirect_to, allowed_hosts={self.request.get_host()}):
                 redirect_to = self.request.path
 
         return redirect_to
